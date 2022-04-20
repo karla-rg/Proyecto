@@ -1,0 +1,13 @@
+class Main { 
+  x : B <- (new B).foo(x);
+  main() : B {0 }; 
+};
+
+class A {
+  foo(x: Object) : SELF_TYPE {self};
+
+};
+
+class B inherits A {
+};
+
