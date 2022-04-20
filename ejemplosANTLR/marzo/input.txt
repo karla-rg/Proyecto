@@ -1,0 +1,25 @@
+def func(x, y, z)
+as
+->
+    printstr("Hola mundo: ")
+    printint(x)
+    printstr("\n")
+    return x - 1
+<-
+
+def main () as
+->
+    int variable
+    variable = 5
+    while (variable)
+    ->
+        variable = func(variable, 9, 10)
+    <-
+
+    if (variable < 100) then 
+    ->
+        printstr("Si era menor\n")
+    <-
+
+    return 0
+<-
