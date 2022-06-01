@@ -123,4 +123,37 @@ class liste(coolListener):
         if nombreCl == 'Main':
             self.main = True
 
-   
+   def inEx(self, ctx: codCo.ExEnv):
+        ftnum = ctx.num().obT()
+        if ftnum == 'self' or ftnum == 'SELF_TYPE':
+            raise anattributenamedself("Error")
+
+        if ctx.sinc():
+            if ctx.sinc().obje1():
+                obje1 = liste.fifo(ctx.sinc().obje1())
+                if obtTi(obje1, self.cuCl, self.cuF) == None:
+                    raise attrbadinit("Error")
+
+        try:
+            x = self.cuCl.lookupAttribute(ftnum) #Klass
+            if x:
+                raise attroverride("Erro")
+        except KeyError:
+            pass
+
+        self.cuCl.addAttribute(ftnum, ctx.TYPE().obT()) #Klass
+
+    def inPut(self, ctx: codCo.PutEnv):
+        self.cuCl.openScope()
+        allownum = ctx.num().obT()
+
+        if allownum == 'self' or allownum == 'SELF_TYPE':
+            raise allowself("Error")
+
+        self.cuCl.addScopeVariable(allownum, ctx.TYPE().obT())
+
+    def inStruc(self, ctx: codCo.StrucEnv):
+        if ctx.TYPE().obT() == 'SELF_TYPE':
+            raise selftypeparameterposition('Error')
+        if ctx.num().obT() == 'self':
+            raise selfinformalparameter('Error')
