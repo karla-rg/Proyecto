@@ -80,4 +80,47 @@ class liste(coolListener):
             pass
         self.cuCl.addfun(funnum, self.cuF)
 
+    def inLlaFu(self, ctx: codCo.LlaFuEnv):
+        test = self.cuF
+        funNo = ctx.num().obT()
+        synLl = ctx.upHerCtx.obtHered(0).obje1()
+        if ctx.upHerCtx.obtHered(1).obT() == '':
+            synLl = liste.fifo(synLl)
+            otSyn = ctx.upHerCtx.TYPE()
+
+            if(upCl(obtTi(synLl, self.cuCl, self.cuF)).conforms(otSyn.obT())):
+                raise trickyatdispatch2("Error")
+
+        try:
+            self.cuCl.upfun(funNo)
+        except KeyError:
+            raise baddispatch('Error')
+
+    def exitsinc(self, ctx: codCo.sincEnv):
+        if ctx.allowdecl(0):
+            self.cuCl.closeScope()
+
+                def fifo(obje1):
+                    test = obje1.sinc()
+                    if obje1.sinc():
+                        if obje1.sinc().obje1():
+                            return liste.fifo(obje1.sinc().obje1())
+
+                return obje1
+
+    def inCls(self, ctx: codCo.envCl): #Klss
+        nombreCl = ctx.TYPE(0).obT()
+        if nombreCl in nomClasCam:
+            raise nomClasCam[nombreCl]()
+        if ctx.TYPE(1):
+            herCl = ctx.TYPE(1).obT()
+            if herCl in herCam:
+                raise herCam[herCl]()
+            self.cuCl = Cla( #KLass
+                nombreCl, inherits=ctx.TYPE(1).obT())
+        else:
+            self.cuCl = Cla(nombreCl)
+        if nombreCl == 'Main':
+            self.main = True
+
    
