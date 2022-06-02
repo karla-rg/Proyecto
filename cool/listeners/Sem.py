@@ -157,3 +157,21 @@ class liste(coolListener):
             raise selftypeparameterposition('Error')
         if ctx.num().obT() == 'self':
             raise selfinformalparameter('Error')
+
+    def exitCla(self, ctx: codCo.envCl):
+        if (not self.main):
+            raise nomain()
+        self.cuCl = None
+
+    def inRecL(self, ctx: codCo.RecLEnv):
+        tiz = obtTi(liste.fifo(ctx.sinc(0).obje1()), self.cuCl, self.cuF) #Klass
+        if tiz != 'Bool':
+            raise badwhilecond("While ")
+
+    def inCase(self, ctx: codCo.CaseEnv):
+        ClTi = {''}
+        for i in ctx.follC():
+            if i.TYPE().obT() in ClTi:
+                raise casenumenticalbranch("Error")
+            else:
+                ClTi.add(i.TYPE().obT())
